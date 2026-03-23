@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYS SNAP Assistance Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    a.skip {
+      position: absolute;
+      left: -999px;
+      top: 12px;
+      background: #FAE600;
+      color: #111;
+      padding: 8px;
+      z-index: 99;
+      border-radius: 5px;
+    }
+    a.skip:focus {
+      left: 10px;
+      outline: 2px solid #3477db;
+    }
+    #help-survey-section form { background: white; padding: 20px; border-radius: 10px; width: 300px; margin: auto; }
+    #help-survey-section input, #help-survey-section select, #help-survey-section button { width: 100%; padding: 8px; margin-top: 10px; box-sizing: border-box; }
+    #help-survey-section button { background: #3477db; color: white; border: none; cursor: pointer; }
+    #help-survey-section button:hover { background: #2557a7; }
+    #help-survey-section #success2 { margin-top: 15px; padding: 10px; display: none; text-align: center; color: white; border-radius: 5px; }
+    #help-survey-section table { width: 100%; max-width: 400px; margin: 20px auto; border-collapse: collapse; }
+    #help-survey-section th, #help-survey-section td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    #help-survey-section th { background: #3477db; color: white; }
+    .disclaimer { font-size:0.97rem; color: #555; background: #f7f7ee; border-left: 4px solid #3477db; padding: 8px 12px; margin: 16px 0; }
+    .privacy { font-size:0.87rem; color:#377; margin-top:8px; margin-bottom:4px;}
+    .mission { margin:20px 0; font-weight:500;}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#maincontent">Skip to main content</a>
+  <header>
+    <h1>NYS SNAP Assistance Hub</h1>
+    <p>Your shortcut to vital SNAP resources, guides, and support—because everyone deserves access to nutrition.</p>
+  </header>
+  <main id="maincontent" tabindex="-1">
+    <section class="mission">
+      <strong>We are an independent assistance site — not operated by NY State or NYC.</strong>
+      Our mission: save you time and stress when finding SNAP forms and help.
+    </section>
+    <section id="help-links">
+      <h2>Quick SNAP Help Links</h2>
+      <ul>
+        <li><a href="https://www.mybenefits.ny.gov/" target="_blank" rel="noopener" aria-label="NYS SNAP Application or MyBenefits Portal, opens in new tab">NYS SNAP Application / MyBenefits Portal ⇗</a></li>
+        <li><a href="https://otda.ny.gov/programs/snap/" target="_blank" rel="noopener" aria-label="Official SNAP information from OTDA, opens in new tab">Official SNAP Info (OTDA) ⇗</a></li>
+        <li><a href="https://www.fns.usda.gov/snap/state-information-hotline-numbers" target="_blank" rel="noopener" aria-label="SNAP state hotline numbers, opens in new tab">SNAP State Hotline Numbers ⇗</a></li>
+        <li><a href="https://otda.ny.gov/programs/apply/#snap" target="_blank" rel="noopener" aria-label="Check application status for SNAP, opens in new tab">Check Application Status ⇗</a></li>
+        <li><a href="https://otda.ny.gov/programs/snap/#faqs" target="_blank" rel="noopener" aria-label="SNAP Frequently Asked Questions, opens in new tab">SNAP FAQs ⇗</a></li>
+        <li><a href="https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page" target="_blank" rel="noopener" aria-label="NYC SNAP Food Benefits Info, opens in new tab">NYC SNAP Food Benefits Info ⇗</a></li>
+      </ul>
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> We do not process SNAP benefits or store your information. This site connects you to official state and city resources—free, without barriers or apps to download.
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 NYS SNAP Assistance Hub</p>
+  </footer>
+  <!-- Help Survey Section -->
+  <hr>
+  <section id="help-survey-section" style="margin-top:40px;">
+    <h2>Tell Us What You Need Most Help With</h2>
+    <div class="privacy">No personal information collected or shared. Name is optional.</div>
+    <form id="survey-form2" aria-label="SNAP Help Survey">
+      <label for="name2">Name (optional):</label>
+      <input type="text" id="name2" placeholder="(Optional) Enter your name">
+      <label for="service2">I need most help with:</label>
+      <select id="service2">
+        <option value="apply">Applying for SNAP benefits</option>
+        <option value="documents">What paperwork or documents I need</option>
+        <option value="nyc-card">EBT/SNAP card issues or replacement</option>
+        <option value="status">Checking my SNAP application status</option>
+        <option value="recertification">Recertifying SNAP / keeping benefits active</option>
+        <option value="using-benefits">Where or how I can use my SNAP</option>
+        <option value="other">Other / Not listed</option>
+      </select>
+      <button type="submit">Let Us Know</button>
+    </form>
+    <div id="success2" role="alert"></div>
+    <table id="submission-table2" aria-label="Table of survey responses">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Help Needed Most</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+  <script>
+    // Help survey logic
+    const form2 = document.getElementById('survey-form2');
+    const success2 = document.getElementById('success2');
+    const tableBody2 = document.querySelector('#submission-table2 tbody');
+
+    form2.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name2').value.trim() || "Anonymous";
+        const service = document.getElementById('service2');
+        const selectedText = service.options[service.selectedIndex].text;
+
+        success2.textContent = `Thank you! We've noted you need help with "${selectedText}".`;
+        success2.style.background = "#3477db";
+        success2.style.display = "block";
+
+        // Add row to table
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const serviceCell = document.createElement('td');
+        nameCell.textContent = name;
+        serviceCell.textContent = selectedText;
+        row.appendChild(nameCell);
+        row.appendChild(serviceCell);
+        tableBody2.appendChild(row);
+
+        form2.reset();
+    });
+  </script>
+</body>
+</html>
