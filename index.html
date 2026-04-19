@@ -1,128 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYS SNAP Assistance Hub</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    a.skip {
-      position: absolute;
-      left: -999px;
-      top: 12px;
-      background: #FAE600;
-      color: #111;
-      padding: 8px;
-      z-index: 99;
-      border-radius: 5px;
-    }
-    a.skip:focus {
-      left: 10px;
-      outline: 2px solid #3477db;
-    }
-    #help-survey-section form { background: white; padding: 20px; border-radius: 10px; width: 300px; margin: auto; }
-    #help-survey-section input, #help-survey-section select, #help-survey-section button { width: 100%; padding: 8px; margin-top: 10px; box-sizing: border-box; }
-    #help-survey-section button { background: #3477db; color: white; border: none; cursor: pointer; }
-    #help-survey-section button:hover { background: #2557a7; }
-    #help-survey-section #success2 { margin-top: 15px; padding: 10px; display: none; text-align: center; color: white; border-radius: 5px; }
-    #help-survey-section table { width: 100%; max-width: 400px; margin: 20px auto; border-collapse: collapse; }
-    #help-survey-section th, #help-survey-section td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    #help-survey-section th { background: #3477db; color: white; }
-    .disclaimer { font-size:0.97rem; color: #555; background: #f7f7ee; border-left: 4px solid #3477db; padding: 8px 12px; margin: 16px 0; }
-    .privacy { font-size:0.87rem; color:#377; margin-top:8px; margin-bottom:4px;}
-    .mission { margin:20px 0; font-weight:500;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYS SNAP Assistance Hub</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eef3f8;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #1f5f4a, #2a7f62);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: #163f33;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* SECTIONS */
+section {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* HERO STYLE */
+.hero {
+  text-align: center;
+}
+
+/* BUTTONS */
+button {
+  background: #2a7f62;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #1f5f4a;
+}
+
+/* INPUTS */
+input, select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: #2a7f62;
+  color: white;
+}
+
+/* ACCESSIBILITY */
+:focus {
+  outline: 3px solid #2a7f62;
+  outline-offset: 2px;
+}
+</style>
+
 </head>
+
 <body>
-  <a class="skip" href="#maincontent">Skip to main content</a>
-  <header>
-    <h1>NYS SNAP Assistance Hub</h1>
-    <p>Your shortcut to vital SNAP resources, guides, and support—because everyone deserves access to nutrition.</p>
-  </header>
-  <main id="maincontent" tabindex="-1">
-    <section class="mission">
-      <strong>We are an independent assistance site — not operated by NY State or NYC.</strong>
-      Our mission: save you time and stress when finding SNAP forms and help.
-    </section>
-    <section id="help-links">
-      <h2>Quick SNAP Help Links</h2>
-      <ul>
-        <li><a href="https://www.mybenefits.ny.gov/" target="_blank" rel="noopener" aria-label="NYS SNAP Application or MyBenefits Portal, opens in new tab">NYS SNAP Application / MyBenefits Portal ⇗</a></li>
-        <li><a href="https://otda.ny.gov/programs/snap/" target="_blank" rel="noopener" aria-label="Official SNAP information from OTDA, opens in new tab">Official SNAP Info (OTDA) ⇗</a></li>
-        <li><a href="https://www.fns.usda.gov/snap/state-information-hotline-numbers" target="_blank" rel="noopener" aria-label="SNAP state hotline numbers, opens in new tab">SNAP State Hotline Numbers ⇗</a></li>
-        <li><a href="https://otda.ny.gov/programs/apply/#snap" target="_blank" rel="noopener" aria-label="Check application status for SNAP, opens in new tab">Check Application Status ⇗</a></li>
-        <li><a href="https://otda.ny.gov/programs/snap/#faqs" target="_blank" rel="noopener" aria-label="SNAP Frequently Asked Questions, opens in new tab">SNAP FAQs ⇗</a></li>
-        <li><a href="https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page" target="_blank" rel="noopener" aria-label="NYC SNAP Food Benefits Info, opens in new tab">NYC SNAP Food Benefits Info ⇗</a></li>
-      </ul>
-      <div class="disclaimer">
-        <strong>Disclaimer:</strong> We do not process SNAP benefits or store your information. This site connects you to official state and city resources—free, without barriers or apps to download.
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2026 NYS SNAP Assistance Hub</p>
-  </footer>
-  <!-- Help Survey Section -->
-  <hr>
-  <section id="help-survey-section" style="margin-top:40px;">
-    <h2>Tell Us What You Need Most Help With</h2>
-    <div class="privacy">No personal information collected or shared. Name is optional.</div>
-    <form id="survey-form2" aria-label="SNAP Help Survey">
-      <label for="name2">Name (optional):</label>
-      <input type="text" id="name2" placeholder="(Optional) Enter your name">
-      <label for="service2">I need most help with:</label>
-      <select id="service2">
-        <option value="apply">Applying for SNAP benefits</option>
-        <option value="documents">What paperwork or documents I need</option>
-        <option value="nyc-card">EBT/SNAP card issues or replacement</option>
-        <option value="status">Checking my SNAP application status</option>
-        <option value="recertification">Recertifying SNAP / keeping benefits active</option>
-        <option value="using-benefits">Where or how I can use my SNAP</option>
-        <option value="other">Other / Not listed</option>
-      </select>
-      <button type="submit">Let Us Know</button>
-    </form>
-    <div id="success2" role="alert"></div>
-    <table id="submission-table2" aria-label="Table of survey responses">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Help Needed Most</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </section>
-  <script>
-    // Help survey logic
-    const form2 = document.getElementById('survey-form2');
-    const success2 = document.getElementById('success2');
-    const tableBody2 = document.querySelector('#submission-table2 tbody');
 
-    form2.addEventListener('submit', function(e) {
-        e.preventDefault();
+<header>
+  <h1>NYS SNAP Assistance Hub</h1>
+  <p>Helping New Yorkers access food benefits easily and quickly</p>
+</header>
 
-        const name = document.getElementById('name2').value.trim() || "Anonymous";
-        const service = document.getElementById('service2');
-        const selectedText = service.options[service.selectedIndex].text;
+<nav>
+  <a href="#home">Home</a>
+  <a href="#links">Resources</a>
+  <a href="#eligibility">Eligibility</a>
+  <a href="#survey">Survey</a>
+</nav>
 
-        success2.textContent = `Thank you! We've noted you need help with "${selectedText}".`;
-        success2.style.background = "#3477db";
-        success2.style.display = "block";
+<!-- HOME -->
+<section id="home" class="hero">
+  <h2>Welcome</h2>
+  <p>
+    This website helps users understand SNAP eligibility, find official New York resources,
+    and get guidance on food assistance programs.
+  </p>
+</section>
 
-        // Add row to table
-        const row = document.createElement('tr');
-        const nameCell = document.createElement('td');
-        const serviceCell = document.createElement('td');
-        nameCell.textContent = name;
-        serviceCell.textContent = selectedText;
-        row.appendChild(nameCell);
-        row.appendChild(serviceCell);
-        tableBody2.appendChild(row);
+<!-- RESOURCES -->
+<section id="links">
+  <h2>Quick SNAP Resources</h2>
 
-        form2.reset();
-    });
-  </script>
+  <ul>
+    <li><a href="https://www.mybenefits.ny.gov/" target="_blank">NY MyBenefits Portal</a></li>
+    <li><a href="https://otda.ny.gov/programs/snap/" target="_blank">Official SNAP Info (NY OTDA)</a></li>
+    <li><a href="https://www.fns.usda.gov/snap/state-information-hotline-numbers" target="_blank">SNAP Hotline Numbers</a></li>
+    <li><a href="https://otda.ny.gov/programs/apply/#snap" target="_blank">Application Status</a></li>
+    <li><a href="https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page" target="_blank">NYC SNAP Info</a></li>
+  </ul>
+</section>
+
+<!-- ELIGIBILITY -->
+<section id="eligibility">
+  <h2>SNAP Eligibility Checker</h2>
+
+  <label>Household Size:</label>
+  <input type="number" id="household">
+
+  <label>Monthly Income ($):</label>
+  <input type="number" id="income">
+
+  <button onclick="checkEligibility()">Check Eligibility</button>
+
+  <p id="result"></p>
+</section>
+
+<!-- SURVEY -->
+<section id="survey">
+  <h2>Community Help Survey</h2>
+
+  <form id="surveyForm">
+    <input type="text" id="name" placeholder="Name (optional)">
+
+    <select id="need">
+      <option>Applying for SNAP</option>
+      <option>Documents needed</option>
+      <option>Checking status</option>
+      <option>EBT card issues</option>
+      <option>Recertification</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Need</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</section>
+
+<script>
+// Eligibility checker
+function checkEligibility() {
+  let h = parseInt(document.getElementById("household").value);
+  let i = parseInt(document.getElementById("income").value);
+  let r = document.getElementById("result");
+
+  if ((h === 1 && i < 1580) || (h === 2 && i < 2137)) {
+    r.textContent = "You may qualify for SNAP benefits.";
+  } else {
+    r.textContent = "You may not qualify, but still check official resources.";
+  }
+}
+
+// Survey
+document.getElementById("surveyForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value || "Anonymous";
+  let need = document.getElementById("need").value;
+
+  let row = document.createElement("tr");
+  row.innerHTML = `<td>${name}</td><td>${need}</td>`;
+
+  document.getElementById("tableBody").appendChild(row);
+
+  this.reset();
+});
+</script>
+
 </body>
 </html>
