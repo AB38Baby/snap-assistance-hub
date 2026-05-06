@@ -14,7 +14,6 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
 header {
   background: linear-gradient(135deg, #1f5f4a, #2a7f62);
   color: white;
@@ -27,7 +26,6 @@ header h1 {
   font-size: 2.5rem;
 }
 
-/* NAV */
 nav {
   position: sticky;
   top: 0;
@@ -48,7 +46,6 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* SECTIONS */
 section {
   background: white;
   margin: 20px auto;
@@ -58,12 +55,10 @@ section {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* HERO */
 .hero {
   text-align: center;
 }
 
-/* BUTTONS */
 button {
   background: #2a7f62;
   color: white;
@@ -78,7 +73,6 @@ button:hover {
   background: #1f5f4a;
 }
 
-/* INPUTS */
 input, select {
   width: 100%;
   max-width: 400px;
@@ -88,7 +82,6 @@ input, select {
   border: 1px solid #ccc;
 }
 
-/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -106,13 +99,11 @@ th {
   color: white;
 }
 
-/* ACCESSIBILITY */
 :focus {
   outline: 3px solid #2a7f62;
   outline-offset: 2px;
 }
 
-/* MOBILE POLISH */
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.8rem;
@@ -150,7 +141,6 @@ th {
   <a href="#survey">Survey</a>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="hero">
   <h2>Welcome</h2>
 
@@ -159,10 +149,8 @@ th {
   </p>
 </section>
 
-<!-- RESOURCES -->
 <section id="links">
   <h2>Quick SNAP Resources</h2>
-
   <ul>
     <li><a href="https://www.mybenefits.ny.gov/" target="_blank">NY MyBenefits Portal</a></li>
     <li><a href="https://otda.ny.gov/programs/snap/" target="_blank">Official SNAP Info (NY OTDA)</a></li>
@@ -172,7 +160,6 @@ th {
   </ul>
 </section>
 
-<!-- ELIGIBILITY -->
 <section id="eligibility">
   <h2>SNAP Eligibility Checker</h2>
 
@@ -187,7 +174,6 @@ th {
   <p id="result"></p>
 </section>
 
-<!-- SURVEY -->
 <section id="survey">
   <h2>Community Help Survey</h2>
 
@@ -217,7 +203,6 @@ th {
 </section>
 
 <script>
-// Load saved survey data (local browser only)
 window.onload = function () {
   let savedData = JSON.parse(localStorage.getItem("surveyData")) || [];
   let table = document.getElementById("tableBody");
@@ -229,7 +214,6 @@ window.onload = function () {
   });
 };
 
-// Eligibility checker
 function checkEligibility() {
   let h = parseInt(document.getElementById("household").value);
   let i = parseInt(document.getElementById("income").value);
@@ -242,7 +226,6 @@ function checkEligibility() {
   }
 }
 
-// Survey with local-only persistence
 document.getElementById("surveyForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -283,12 +266,9 @@ document.getElementById("surveyForm").addEventListener("submit", function(e) {
 
   <h4>Disclaimer</h4>
   <p>
-    This site is not affiliated with NY State or NYC government. It does not process benefits
-    or store personal information on external servers. Any survey responses are stored locally
-    in the user's browser only.<br><br>
+    This site is not affiliated with NY State or NYC government. It does not process benefits or store personal information on external servers. Any survey responses are stored locally in the user's browser only.<br><br>
 
-    Future integration with official SNAP systems would follow their data privacy policies.
-    This prototype does not collect or transmit user data beyond local browser storage.
+    Future integration with official SNAP systems would follow their data privacy policies. This prototype does not collect or transmit user data beyond local browser storage.
   </p>
 </footer>
 
