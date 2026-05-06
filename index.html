@@ -58,7 +58,7 @@ section {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* HERO STYLE */
+/* HERO */
 .hero {
   text-align: center;
 }
@@ -111,6 +111,27 @@ th {
   outline: 3px solid #2a7f62;
   outline-offset: 2px;
 }
+
+/* MOBILE POLISH */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 6px;
+  }
+
+  input, select, button {
+    font-size: 16px;
+  }
+}
 </style>
 
 </head>
@@ -132,17 +153,9 @@ th {
 <!-- HOME -->
 <section id="home" class="hero">
   <h2>Welcome</h2>
-  <p>
-    This website helps users understand SNAP eligibility, find official New York resources,
-    and get guidance on food assistance programs.
-  </p>
 
-  <!-- TEEN-FRIENDLY ADD -->
   <p>
-    Think of this site like a shortcut hub. Instead of searching all over the internet,
-    everything you need for SNAP is right here in one place. You can quickly find links to apply,
-    check your status, fix EBT card issues, or figure out what steps to take next. It’s simple,
-    fast, and made for real people who just need clear answers without the confusion.
+    SNAP (Supplemental Nutrition Assistance Program) is a government program that helps individuals and families afford food through monthly benefits. This site provides easy access to official SNAP resources, including applications, status updates, EBT card support, and general program information in one organized place.
   </p>
 </section>
 
@@ -179,7 +192,7 @@ th {
   <h2>Community Help Survey</h2>
 
   <form id="surveyForm">
-    <input type="text" id="name" placeholder="Name (optional)">
+    <input type="text" id="name" placeholder="Anonymous label (optional)">
 
     <select id="need">
       <option>Applying for SNAP</option>
@@ -195,7 +208,7 @@ th {
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Label</th>
         <th>Need</th>
       </tr>
     </thead>
@@ -204,6 +217,18 @@ th {
 </section>
 
 <script>
+// Load saved survey data (local browser only)
+window.onload = function () {
+  let savedData = JSON.parse(localStorage.getItem("surveyData")) || [];
+  let table = document.getElementById("tableBody");
+
+  savedData.forEach(entry => {
+    let row = document.createElement("tr");
+    row.innerHTML = `<td>${entry.label}</td><td>${entry.need}</td>`;
+    table.appendChild(row);
+  });
+};
+
 // Eligibility checker
 function checkEligibility() {
   let h = parseInt(document.getElementById("household").value);
@@ -217,16 +242,21 @@ function checkEligibility() {
   }
 }
 
-// Survey
+// Survey with local-only persistence
 document.getElementById("surveyForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  let name = document.getElementById("name").value || "Anonymous";
+  let label = document.getElementById("name").value || "Anonymous";
   let need = document.getElementById("need").value;
 
-  let row = document.createElement("tr");
-  row.innerHTML = `<td>${name}</td><td>${need}</td>`;
+  let entry = { label, need };
 
+  let existingData = JSON.parse(localStorage.getItem("surveyData")) || [];
+  existingData.push(entry);
+  localStorage.setItem("surveyData", JSON.stringify(existingData));
+
+  let row = document.createElement("tr");
+  row.innerHTML = `<td>${label}</td><td>${need}</td>`;
   document.getElementById("tableBody").appendChild(row);
 
   this.reset();
@@ -236,11 +266,11 @@ document.getElementById("surveyForm").addEventListener("submit", function(e) {
 <!-- FOOTER -->
 <footer style="background:#163f33; color:white; padding:20px; text-align:center; margin-top:30px;">
   <h3>NYS SNAP Assistance Hub</h3>
+
   <p>
-    This website is a shortcut and resource page helping New Yorkers quickly access official SNAP 
-    (Supplemental Nutrition Assistance Program) resources. Users can find links to applications, 
-    card replacement info, FAQs, and more—plus let us know what parts of SNAP they need the most 
-    help with using our built-in survey.
+    This website is a shortcut and resource page helping New Yorkers quickly access official SNAP
+    (Supplemental Nutrition Assistance Program) resources. Users can find links to applications,
+    card replacement info, FAQs, and more.
   </p>
 
   <h4>Features</h4>
@@ -248,13 +278,17 @@ document.getElementById("surveyForm").addEventListener("submit", function(e) {
     Direct links to NYS/NYC SNAP application, status check, and help pages<br>
     A built-in survey to find out what users need most help with<br>
     Accessible, mobile-friendly design<br>
-    No account required, no personal info collected
+    No account required, no personal information collected beyond optional anonymous labels stored locally in the browser
   </p>
 
   <h4>Disclaimer</h4>
   <p>
-    This site is not affiliated with NY State or NYC government. It does not process benefits 
-    or store personal information—just provides reliable shortcut links and guides.
+    This site is not affiliated with NY State or NYC government. It does not process benefits
+    or store personal information on external servers. Any survey responses are stored locally
+    in the user's browser only.<br><br>
+
+    Future integration with official SNAP systems would follow their data privacy policies.
+    This prototype does not collect or transmit user data beyond local browser storage.
   </p>
 </footer>
 
